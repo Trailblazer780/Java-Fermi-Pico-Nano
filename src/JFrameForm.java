@@ -37,6 +37,8 @@ public class JFrameForm extends JFrame {
 				}
 			}
 		});
+		
+		Fermi newGame = new Fermi();
 	}
 
 	/**
