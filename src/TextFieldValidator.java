@@ -14,8 +14,8 @@ public class TextFieldValidator {
 	
 	//------------------------------------------------------ Public Methods
 	
-	public void check() {
-		
+	public boolean check() {
+		return true;
 	}
 	
 	public void reset() {
