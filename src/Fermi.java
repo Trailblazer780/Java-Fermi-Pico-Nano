@@ -1,23 +1,38 @@
+import java.util.ArrayList;
+import java.util.Random;
 
 public class Fermi {
 
 	private int numOne;
 	private int numTwo;
 	private int numThree;
+	private ArrayList<Integer> distinctNumbers;
 	
 	//------------------------------------ Construction
 	public Fermi() {
+		getDistinctNumbers();
 		setNumOne();
 		setNumTwo();
 		setNumThree();
 	}
 	
-	
-	
+		
 	//------------------------------------ Public Methods
-	public int randomNumbers(int min, int max) {
-		int random = (int)(Math.random() * max + min);
-		return random;
+	
+	public void getDistinctNumbers() {
+	    Random random = new Random();
+	    distinctNumbers = new ArrayList<Integer>();
+	    
+	    // will keep looping until the size of the array reaches 3
+	    while (distinctNumbers.size() < 3) {
+	    	// Generates the random integer from 1 to 9
+	        int x = random.nextInt(8)+1; 
+	        // If the integer that is generated is no already in the array list it will be added to the next spot in the arraylist
+	        if (!distinctNumbers.contains(x)) {
+	        	distinctNumbers.add(x);
+	        }
+	    }
+	    System.out.println(distinctNumbers);
 	}
 	
 	//------------------------------------ Gets & Sets 
@@ -35,18 +50,21 @@ public class Fermi {
 	}
 	
 	public void setNumOne() {
-		numOne = randomNumbers(1,9);
-		System.out.println(numOne);
+		// setting numOne by getting its value from the arraylist
+		numOne = distinctNumbers.get(0);
+		//System.out.println(numOne);
 	}
 	
 	public void setNumTwo() {
-		numTwo = randomNumbers(1,9);
-		System.out.println(numTwo);
+		// setting numTwo by getting its value from the arraylist
+		numTwo = distinctNumbers.get(1);
+		//System.out.println(numTwo);
 	}
 	
 	public void setNumThree() {
-		numThree = randomNumbers(1,9);
-		System.out.println(numThree);
+		// setting numThree by getting its value from the arraylist
+		numThree = distinctNumbers.get(2);
+		//System.out.println(numThree);
 	}
 	
 	

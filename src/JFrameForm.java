@@ -15,13 +15,17 @@ import javax.swing.JTextArea;
 import javax.swing.JScrollBar;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
 
 public class JFrameForm extends JFrame {
 
 	private JPanel contentPane;
-	private final JTextField txtGuess1 = new JTextField();
+	private JTextField txtGuess1;
 	private JTextField txtGuess2;
 	private JTextField txtGuess3;
+	private TextFieldValidator getInput;
+	private TextFieldValidator getInput2;
+	private TextFieldValidator getInput3;
 
 	/**
 	 * Launch the application.
@@ -53,6 +57,7 @@ public class JFrameForm extends JFrame {
 		
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		txtGuess1 = new JTextField();
 		txtGuess1.setBounds(27, 87, 86, 27);
 		txtGuess1.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 		contentPane.add(txtGuess1);
@@ -80,6 +85,13 @@ public class JFrameForm extends JFrame {
 		contentPane.add(lblInstructions);
 		
 		JButton btnOk = new JButton("Ok");
+		btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TextFieldValidator getInput = new TextFieldValidator(txtGuess1);
+				TextFieldValidator getInput2 = new TextFieldValidator(txtGuess2);
+				TextFieldValidator getinput3 = new TextFieldValidator(txtGuess3);
+			}
+		});
 		btnOk.setBounds(27, 199, 86, 23);
 		contentPane.add(btnOk);
 		
@@ -91,21 +103,12 @@ public class JFrameForm extends JFrame {
 		btnReset.setBounds(27, 280, 86, 27);
 		contentPane.add(btnReset);
 		
-		JTextArea txtOutput = new JTextArea();
-		txtOutput.setEditable(false);
-		txtOutput.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
-		txtOutput.setBounds(230, 87, 259, 220);
-		contentPane.add(txtOutput);
-		
 		JLabel lblHints = new JLabel("Hints:");
 		lblHints.setBounds(230, 62, 46, 14);
 		contentPane.add(lblHints);
 		
-		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(472, 87, 17, 183);
-		contentPane.add(scrollBar);
+		JScrollPane pnlScroll = new JScrollPane();
+		pnlScroll.setBounds(230, 87, 259, 220);
+		contentPane.add(pnlScroll);
 	}
-	
-	
-	
 }
