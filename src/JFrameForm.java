@@ -16,6 +16,7 @@ import javax.swing.JScrollBar;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 public class JFrameForm extends JFrame {
 
@@ -26,6 +27,8 @@ public class JFrameForm extends JFrame {
 	private TextFieldValidator getInput;
 	private TextFieldValidator getInput2;
 	private TextFieldValidator getInput3;
+	private TextFieldValidator resetting;
+	public JTextArea txtOutput;
 
 	/**
 	 * Launch the application.
@@ -42,13 +45,16 @@ public class JFrameForm extends JFrame {
 			}
 		});
 		
-		Fermi newGame = new Fermi();
+		//Fermi newGame = new Fermi();
+		//txtOutput.setText("answer: ");
 	}
 
 	/**
 	 * Create the frame.
 	 */
 	public JFrameForm() {
+		Fermi newGame = new Fermi();
+		TextFieldValidator access = new TextFieldValidator();
 		setTitle("Fermi Guessing Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 542, 378);
@@ -98,6 +104,8 @@ public class JFrameForm extends JFrame {
 		JButton btnReset = new JButton("Reset");
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				access.reset(txtGuess1, txtGuess2, txtGuess3);
+				resetGame();
 			}
 		});
 		btnReset.setBounds(27, 280, 86, 27);
@@ -107,8 +115,21 @@ public class JFrameForm extends JFrame {
 		lblHints.setBounds(230, 62, 46, 14);
 		contentPane.add(lblHints);
 		
-		JScrollPane pnlScroll = new JScrollPane();
+		txtOutput = new JTextArea();
+		txtOutput.setText("answer: " + newGame.getNumOne()+" : " + newGame.getNumTwo() + " : " + newGame.getNumThree());
+		JScrollPane pnlScroll = new JScrollPane(txtOutput, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		pnlScroll.setBounds(230, 87, 259, 220);
 		contentPane.add(pnlScroll);
+		
 	}
+	
+	public void resetGame() {
+		txtOutput.setText("");
+		txtGuess1.setText("");
+		txtGuess2.setText("");
+		txtGuess3.setText("");
+		Fermi newGame = new Fermi();
+		txtOutput.setText("answer: " + newGame.getNumOne()+" : " + newGame.getNumTwo() + " : " + newGame.getNumThree());
+	}
+	
 }
