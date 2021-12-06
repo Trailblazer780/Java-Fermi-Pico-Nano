@@ -17,8 +17,11 @@ then generate another set of 3 random numbers.
 
 Below is a screenshot of the program in use:
 
+## Program first being run:
 ![alt text](https://github.com/Trailblazer780/Project2/blob/main/Images/Example%201.PNG)
 
+## Invalid Input:
 ![alt text](https://github.com/Trailblazer780/Project2/blob/main/Images/Example%202.PNG)
 
+## Winning the game:
 ![alt text](https://github.com/Trailblazer780/Project2/blob/main/Images/Example%203.PNG)
